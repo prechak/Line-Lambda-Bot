@@ -47,3 +47,4 @@ npm run deploy
 - **ปรับแต่งการตอบ**: ใช้ temperature 0.8 เพื่อเพิ่มความสร้างสรรค์
 - **จำกัดความยาว**: ตอบไม่เกิน 1000 tokens เพื่อความรวดเร็ว
 # Line-Lambda-Bot
+# Line-Lambda-Bot
