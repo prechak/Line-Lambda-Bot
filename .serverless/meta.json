@@ -1,0 +1,110 @@
+{
+  "/Users/pkrasaes/Desktop/Workshop/line-lambda-bot/serverless.yml": {
+    "versionFramework": "4.17.1",
+    "servicePath": "/Users/pkrasaes/Desktop/Workshop/line-lambda-bot/serverless.yml",
+    "serviceConfigFileName": "serverless.yml",
+    "service": {
+      "service": "line-lambda-bot",
+      "provider": {
+        "name": "aws",
+        "runtime": "nodejs18.x",
+        "region": "ap-southeast-1",
+        "timeout": 30,
+        "memorySize": 1024,
+        "environment": {
+          "CHANNEL_SECRET": "<REDACTED>",
+          "CHANNEL_ACCESS_TOKEN": "<REDACTED>",
+          "GEMINI_API_KEY": "<REDACTED>",
+          "LOGGING_ENDPOINT": "https://script.google.com/macros/s/AKfycbyQdSyPnzVA4I2i3uucpRI_qKlwYOQpjUGVv5D9iEBcMI_G7ghXlf4S5kNSwHlokeO0/exec"
+        },
+        "stage": "dev",
+        "versionFunctions": true
+      },
+      "functions": {
+        "app": {
+          "handler": "index.handler",
+          "timeout": 30,
+          "memorySize": 1024,
+          "events": [
+            {
+              "http": {
+                "path": "/default/webhook",
+                "method": "post"
+              }
+            },
+            {
+              "http": {
+                "path": "/",
+                "method": "get"
+              }
+            }
+          ],
+          "name": "line-lambda-bot-dev-app"
+        }
+      },
+      "plugins": [
+        "serverless-dotenv-plugin"
+      ]
+    },
+    "provider": {
+      "name": "aws",
+      "runtime": "nodejs18.x",
+      "region": "ap-southeast-1",
+      "timeout": 30,
+      "memorySize": 1024,
+      "environment": {
+        "CHANNEL_SECRET": "<REDACTED>",
+        "CHANNEL_ACCESS_TOKEN": "<REDACTED>",
+        "GEMINI_API_KEY": "<REDACTED>",
+        "LOGGING_ENDPOINT": "https://script.google.com/macros/s/AKfycbyQdSyPnzVA4I2i3uucpRI_qKlwYOQpjUGVv5D9iEBcMI_G7ghXlf4S5kNSwHlokeO0/exec"
+      },
+      "stage": "dev",
+      "versionFunctions": true
+    },
+    "dashboard": {
+      "isEnabledForService": false,
+      "requiredAuthentication": false,
+      "orgFeaturesInUse": null,
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": null,
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "serviceRawFile": "service: line-lambda-bot\n\nprovider:\n  name: aws\n  runtime: nodejs18.x\n  region: ap-southeast-1\n  timeout: 30\n  memorySize: 1024\n  environment:\n    CHANNEL_SECRET: ${env:CHANNEL_SECRET}\n    CHANNEL_ACCESS_TOKEN: ${env:CHANNEL_ACCESS_TOKEN}\n    GEMINI_API_KEY: ${env:GEMINI_API_KEY}\n    LOGGING_ENDPOINT: ${env:LOGGING_ENDPOINT}\n\nfunctions:\n  app:\n    handler: index.handler\n    timeout: 30\n    memorySize: 1024\n    events:\n      - http:\n          path: /default/webhook\n          method: post\n      - http:\n          path: /\n          method: get\n\nplugins:\n  - serverless-dotenv-plugin\n",
+    "command": [
+      "remove"
+    ],
+    "options": {
+      "aws-profile": "my-personal"
+    },
+    "orgId": "92c8a2a2-55a3-4e44-b8aa-5a6a736f0489",
+    "orgName": "precha",
+    "userId": "3tKZpXdDPk5DnT5qVj",
+    "userName": "precha",
+    "serviceProviderAwsAccountId": "339759184479",
+    "serviceProviderAwsCfStackName": "line-lambda-bot-dev",
+    "serviceProviderAwsCfStackId": "arn:aws:cloudformation:ap-southeast-1:339759184479:stack/line-lambda-bot-dev/f10fb890-5915-11f0-9beb-0ae1fab7df33",
+    "serviceProviderAwsCfStackCreated": "2025-07-04T20:32:02.301Z",
+    "serviceProviderAwsCfStackUpdated": "2025-07-05T20:46:56.911Z",
+    "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
+    "serviceProviderAwsCfStackOutputs": [
+      {
+        "OutputKey": "AppLambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:ap-southeast-1:339759184479:function:line-lambda-bot-dev-app:15",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-line-lambda-bot-dev-AppLambdaFunctionQualifiedArn"
+      },
+      {
+        "OutputKey": "ServiceEndpoint",
+        "OutputValue": "https://v4xg4rz4kf.execute-api.ap-southeast-1.amazonaws.com/dev",
+        "Description": "URL of the service endpoint",
+        "ExportName": "sls-line-lambda-bot-dev-ServiceEndpoint"
+      },
+      {
+        "OutputKey": "ServerlessDeploymentBucketName",
+        "OutputValue": "line-lambda-bot-dev-serverlessdeploymentbucket-jnj3p7qkknhi",
+        "ExportName": "sls-line-lambda-bot-dev-ServerlessDeploymentBucketName"
+      }
+    ]
+  }
+}

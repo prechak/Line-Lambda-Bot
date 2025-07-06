@@ -1,0 +1,29 @@
+service: line-lambda-bot
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-southeast-1
+  timeout: 30
+  memorySize: 1024
+  environment:
+    CHANNEL_SECRET: ${env:CHANNEL_SECRET}
+    CHANNEL_ACCESS_TOKEN: ${env:CHANNEL_ACCESS_TOKEN}
+    GEMINI_API_KEY: ${env:GEMINI_API_KEY}
+    LOGGING_ENDPOINT: ${env:LOGGING_ENDPOINT}
+
+functions:
+  app:
+    handler: index.handler
+    timeout: 30
+    memorySize: 1024
+    events:
+      - http:
+          path: /default/webhook
+          method: post
+      - http:
+          path: /
+          method: get
+
+plugins:
+  - serverless-dotenv-plugin
